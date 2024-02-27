@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +17,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', [AuthController::class, 'register'])->name('register');
+    Route::get('/informasi', [PageController::class, 'informasi'])->name('informasi');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
-    Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
     Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::get('/beranda', [PageController::class, 'beranda']);
+    Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
 });
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [HomeController::class, 'index']);
+Route::group(['middleware' => ['auth', 'cekLevel:admin']], function () {
+    Route::delete('/logoutAd', [AuthController::class, 'logoutAd'])->name('logoutAd');
+    Route::get('/admindashboard', [PageController::class, 'admindashboard']);
+});
+
+Route::group(['middleware' => ['auth', 'cekLevel:user']], function () {
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+

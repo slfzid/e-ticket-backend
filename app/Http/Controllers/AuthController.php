@@ -20,11 +20,12 @@ class AuthController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->level = "user";
         $user->password = Hash::make($request->password);
 
         $user->save();
 
-        return back()->with('success', 'Register successfully');
+        return redirect('login')->with('success', 'Register successfully');
     }
 
     public function login()
@@ -40,16 +41,28 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($credetials)) {
-            return redirect('/home')->with('success', 'Login berhasil');
+            $user = Auth::user();
+
+            if ($user->level == 'user') {
+                return redirect('/home')->with('success', 'Login berhasil');
+            } elseif ($user->level == 'admin') {
+                return redirect('/admindashboard')->with('success', 'Login berhasil sebagai admin');
+            }
         }
 
-        return back()->with('error', 'Email or Password salah');
+        return redirect('login')->with('error', 'Email or Password salah');
     }
 
     public function logout()
     {
         Auth::logout();
 
-        return redirect()->route('login');
+        return redirect('login')->with('success', 'login berhasil');
+    }
+    public function logoutAd()
+    {
+        Auth::logout();
+
+        return redirect('login')->with('success', 'login berhasil');
     }
 }
