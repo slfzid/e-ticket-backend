@@ -59,10 +59,4 @@ class AuthController extends Controller
 
         return redirect('login')->with('success', 'login berhasil');
     }
-    public function logoutAd()
-    {
-        Auth::logout();
-
-        return redirect('login')->with('success', 'login berhasil');
-    }
 }

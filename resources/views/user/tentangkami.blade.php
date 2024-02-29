@@ -40,30 +40,6 @@
                         transparent 100%);
             }
 
-            .profile-dropdown {
-                margin-right: 100px;
-                margin-left: 0;
-                margin-top: 18px;
-            }
-
-            @media (max-width: 992px) {
-                .profile-dropdown {
-                    margin-right: 0.5rem;
-                }
-            }
-
-            @media (max-width: 768px) {
-                .profile-dropdown {
-                    margin-right: 0.2rem;
-                }
-            }
-
-            @media (max-width: 576px) {
-                .profile-dropdown {
-                    margin-right: 0;
-                }
-            }
-
             #radius-shape-1 {
                 height: 220px;
                 width: 220px;
@@ -107,9 +83,7 @@
         </style>
         <!--NAVBAR-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href='beranda'>
-                <img src="assets/logo bpkad.png" alt="Logo" width="100" height="40" class="navbar-brand d-inline-block align-text-top">
-            </a>
+            <img src="assets/logo bpkad.png" alt="Logo" width="100" height="40" class="d-inline-block align-text-top">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -117,44 +91,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/halaman">Home</a>
+                            <a class="nav-link active" aria-current="page" href="/login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href='tentangkami'>Tentang Kami</a>
+                            <a class="nav-link active" aria-current="page" href="/informasi">Informasi</a>
                         </li>
                     </ul>
 
                 </div>
             </div>
-            <!--PROFILE DROPDOWN-->
-            <div class="dropdown pb-4 profile-dropdown">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false" onclick="toggleDropdown()">
-                    <div class="rounded-circle overflow-hidden me-2" style="width: 30px; height: 30px;">
-                        <img src="https://github.com/mdo.png" alt="Profile" class="img-fluid">
-                    </div>
-                    <span class="profile-name">John Doe</span> <!-- Tambahkan nama disini -->
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" id="dropdownMenu">
-                    <li>
-                        <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn" type="submit" style="color: white;">Logout</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
         </nav>
-
-        </nav>
-
 
 
         <!--ISI HALAMAN -->
         <section class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
             <div class="row gx-lg-5 align-items-center mb-5">
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <h2 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)" id="fade-in">Tata Cara Pengaduan E-TICKET Pelayanan yang Benar</h2>
+                    <h2 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)" id="fade-in">Tentang Kami</h2>
                     <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)" id="slide-up">
                         Selamat datang di E-TICKET! Kami adalah tim yang berkomitmen untuk memberikan layanan terbaik
                         dalam menangani pengaduan E-TICKET. Setiap laporan yang Anda berikan merupakan kesempatan bagi kami
@@ -168,16 +121,21 @@
 
                     <div class="card bg-glass" id="fade-in-up">
                         <div class="card-body px-4 py-5">
-                            <p>1. Pastikan Anda telah memiliki akun E-TICKET yang terdaftar.</p>
-                            <p>2. Login ke akun E-TICKET Anda.</p>
-                            <p>3. Pilih menu "Pengaduan" atau "Laporkan Masalah" di aplikasi E-TICKET.</p>
-                            <p>4. Isi formulir pengaduan dengan lengkap dan jelas.</p>
-                            <p>5. Unggah bukti-bukti pendukung jika diperlukan.</p>
-                            <p>6. Klik tombol "Kirim" untuk mengirim pengaduan Anda.</p>
-                            <p>7. Tunggu konfirmasi dari pihak E-TICKET mengenai status pengaduan Anda.</p>
+                            <h5 class="card-title">Visi Kami</h5>
+                            <p class="card-text">
+                                Menjadi platform pengaduan terkemuka yang memberikan solusi cepat dan efektif untuk
+                                setiap pengguna E-TICKET.
+                            </p>
+                            <h5 class="card-title mt-4">Misi Kami</h5>
+                            <ul class="card-text">
+                                <li>Memberikan pelayanan pelanggan yang terbaik.</li>
+                                <li>Menanggapi setiap pengaduan dengan cepat dan tepat.</li>
+                                <li>Terus meningkatkan kualitas layanan.</li>
+                            </ul>
                         </div>
-
                     </div>
+                </div>
+            </div>
         </section>
 
 
@@ -213,15 +171,6 @@
                 delay: 500,
             });
         </script>
-
-        <!--SCRIPT DROPDOWN MENU PROFILE-->
-        <script>
-            function toggleDropdown() {
-                var dropdownMenu = document.getElementById("dropdownMenu");
-                dropdownMenu.classList.toggle("show");
-            }
-        </script>
 </body>
-
 
 </html>
