@@ -122,7 +122,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href='tentang kami'>Tentang Kami</a>
+                            <a class="nav-link active" aria-current="page" href='tentangkami'>Tentang Kami</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href='informasi'>Informasi</a>
@@ -187,7 +187,7 @@
                         <img src="assets/pengaduan.png" class="card-img-top" alt="Your Image Alt Text" style="height:200px">
                         <div class="card-body">
                             <p class="card-text">Pengaduan</p>
-                            <a href="/pengaduan" class="btn btn-primary">Click Disini</a>
+                            <a href='pengaduan' class="btn btn-primary">Pengaduan</a>
                         </div>
                     </div>
                 </div>
@@ -197,7 +197,7 @@
                         <img src="assets/cekpengaduan.png" class="card-img-top" alt="..." style="height:200px">
                         <div class=" card-body">
                             <p class="card-text">Cek Pengaduan</p>
-                            <a href="/cekpengaduan" class="btn btn-primary">Click Disini</a>
+                            <a href='cekpengaduan' class="btn btn-primary">Cek Pengaduan</a>
                         </div>
                     </div>
                 </div>
@@ -207,7 +207,7 @@
                         <img src="assets/informasi.png" class="card-img-top" alt="..." style="height:200px">
                         <div class="card-body">
                             <p class="card-text">Tata Cara</p>
-                            <a href="/halamaninformasi" class="btn btn-primary">Click Disini</a>
+                            <a href='tatacara' class="btn btn-primary">Tata Cara</a>
                         </div>
                     </div>
                 </div>

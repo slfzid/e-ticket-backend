@@ -44,7 +44,7 @@ class AuthController extends Controller
             $user = Auth::user();
 
             if ($user->level == 'user') {
-                return redirect('/home')->with('success', 'Login berhasil');
+                return redirect('/beranda')->with('success', 'Login berhasil');
             } elseif ($user->level == 'admin') {
                 return redirect('/admindashboard')->with('success', 'Login berhasil sebagai admin');
             }

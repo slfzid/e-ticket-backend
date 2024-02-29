@@ -15,22 +15,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Group akses khusus guest 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', [AuthController::class, 'register'])->name('register');
-    Route::get('/informasi', [PageController::class, 'informasi'])->name('informasi');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::get('/login', [AuthController::class, 'login'])->name('login');
-    Route::get('/beranda', [PageController::class, 'beranda']);
+    Route::get('/beranda', [PageController::class, 'beranda'])->name('beranda');
+    Route::get('/informasi', [PageController::class, 'informasi'])->name('informasi');
+    Route::get('/tentangkami', [PageController::class, 'tentangkami'])->name('tentangkami');
+
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
 });
 
-Route::group(['middleware' => ['auth', 'cekLevel:admin']], function () {
-    Route::delete('/logoutAd', [AuthController::class, 'logoutAd'])->name('logoutAd');
-    Route::get('/admindashboard', [PageController::class, 'admindashboard']);
+// Group akses umum yang dihandle di controller
+Route::group([], function () {
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+//Group akses user
 Route::group(['middleware' => ['auth', 'cekLevel:user']], function () {
-    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/beranda', [PageController::class, 'beranda'])->name('beranda');
+    Route::get('/informasi', [PageController::class, 'informasi'])->name('informasi');
+    Route::get('/cekpengaduan', [PageController::class, 'cekpengaduan'])->name('cekpengaduan');
+    Route::get('/pengaduan', [PageController::class, 'pengaduan'])->name('pengaduan');
+    Route::get('/tentangkami', [PageController::class, 'tentangkami'])->name('tentangkami');
+});
+
+// Group akses admin
+Route::group(['middleware' => ['auth', 'cekLevel:admin']], function () {
+    Route::get('/admindashboard', [PageController::class, 'admindashboard']);
+    Route::get('/cekdatapengaduan', [PageController::class, 'cekdatapengaduan']);
+    Route::get('/jawabpengaduan', [PageController::class, 'jawabpengaduan']);
 });
 

@@ -112,7 +112,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                             <li><a class="dropdown-item">
-                            <form action="{{ route('logoutAd') }}" method="POST" class="d-flex" role="search">
+                            <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn" type="submit" style="color: white;">Logout</button>
