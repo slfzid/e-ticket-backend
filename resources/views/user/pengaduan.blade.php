@@ -154,7 +154,8 @@
         <!--FORM PENGISIAN PENGADUAN-->
         <div class="card">
             <div class="card-body">
-                <form>
+                <form action="{{ route('createTicket') }}" method="POST">
+                    @csrf
                     <h2>Data Pengadu</h2>
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
@@ -164,34 +165,27 @@
                         <label for="noTelp" class="form-label">Nomor Telepon</label>
                         <input type="tel" class="form-control" id="noTelp" name="noTelp" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="Kodepengaduan" class="form-label">Kode Pengaduan</label>
-                        <select class="form-select" id="Kodepengaduan" name="Kodepengaduan" required>
-                            <option value="umum">Umum</option>
-                            <option value="not_umum">not Umum</option>
-                        </select>
-                    </div>
 
                     <h2>Kategori</h2>
                     <div class="mb-3">
                         <label for="kategori" class="form-label">Kategori</label>
                         <select class="form-select" id="kategori" name="kategori" required>
                             <option value="umum">Umum</option>
-                            <option value="not_umum">not Umum</option>
+                            <option value="khusus">khusus</option>
                         </select>
                     </div>
 
                     <h2>Isi Aduan</h2>
                     <div class="mb-3">
-                        <label for="judul" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul" required>
+                        <label for="judul" class="form-label">Judul </label>
+                        <input type="judul" name="judul" class="form-control" id="judul" required>
                     </div>
                     <div class="mb-3">
                         <label for="pesan" class="form-label">Pesan</label>
                         <textarea class="form-control" id="pesan" name="pesan" rows="5" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" onclick="onKirim()">Kirim</button>
+                    <button class="btn btn-primary">Kirim</button>
                 </form>
             </div>
         </div>

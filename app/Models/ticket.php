@@ -10,9 +10,9 @@ class ticket extends Model
     use HasFactory;
 
     protected $fillable = [
-        'judul',
         'kategori',
         'prioritas',
-        'deskripsi'
+        'judul',    
+        'pesan',
     ];
 }

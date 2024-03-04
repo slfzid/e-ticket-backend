@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ticketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,8 @@ Route::group([], function () {
 
 //Group akses user
 Route::group(['middleware' => ['auth', 'cekLevel:user']], function () {
+    Route::post('createTicket', [ticketController::class, 'createTicketPost'])->name('createTicket');
+
     Route::get('/beranda', [PageController::class, 'beranda'])->name('beranda');
     Route::get('/informasi', [PageController::class, 'informasi'])->name('informasi');
     Route::get('/cekpengaduan', [PageController::class, 'cekpengaduan'])->name('cekpengaduan');
