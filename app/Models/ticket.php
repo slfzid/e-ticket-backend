@@ -5,14 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ticket extends Model
+class Ticket extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'status',
+        'layanan',
         'kategori',
-        'prioritas',
-        'judul',    
-        'pesan',
+        'judul',
+        'keterangan',
+        'file',
+        'tgl permohonan',
     ];
 }

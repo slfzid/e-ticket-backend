@@ -119,16 +119,22 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Pengaduan ID</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col">Ticket ID</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Kategori</th>
+                            <th scope="col">Layanan</th>
+                            <th scope="col">Judul</th>
+                            <th scope="col">Keterangan</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td>Pengaduan 1</td>
+                            <td>Issued</td>
+                            <td>Aplikasi</td>
+                            <td>E-Budgeting</td>
+                            <td>Judul</td>
                             <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</td>
                             <td>
                                 <a href="/jawabadmin" class="btn btn-primary">Jawab Pengaduan</a>
@@ -136,15 +142,10 @@
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td>Pengaduan 2</td>
-                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</td>
-                            <td>
-                                <a href="/jawabadmin" class="btn btn-primary">Jawab Pengaduan</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Pengaduan 3</td>
+                            <td>On Progress</td>
+                            <td>Aplikasi</td>
+                            <td>SABK</td>
+                            <td>Judul</td>
                             <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</td>
                             <td>
                                 <a href="/jawabadmin" class="btn btn-primary">Jawab Pengaduan</a>

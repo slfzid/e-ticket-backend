@@ -119,33 +119,31 @@
             <div class="card-body">
                 <form action="{{ route('createTicket') }}" method="POST">
                     @csrf
-                    <h2>Data Pengadu</h2>
-                    <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="noTelp" class="form-label">Nomor Telepon</label>
-                        <input type="tel" class="form-control" id="noTelp" name="noTelp" required>
-                    </div>
-
                     <h2>Kategori</h2>
                     <div class="mb-3">
                         <label for="kategori" class="form-label">Kategori</label>
                         <select class="form-select" id="kategori" name="kategori" required>
-                            <option value="umum">Umum</option>
-                            <option value="khusus">khusus</option>
+                            <option value="Akun">Akun</option>
+                            <option value="Aplikasi">Aplikasi / Website</option>
+                            <option value="Aplikasi">Jaringan</option>
                         </select>
                     </div>
-
+                    <h2>Layanan</h2>
+                    <div class="mb-3">
+                        <label for="layanan" class="form-label">Layanan</label>
+                        <select class="form-select" id="layanan" name="layanan" required>
+                            <option value="e-budgeting">E-Budgeting</option>
+                            <option value="sabk">SABK</option>
+                        </select>
+                    </div>  
                     <h2>Isi Aduan</h2>
                     <div class="mb-3">
                         <label for="judul" class="form-label">Judul </label>
                         <input type="judul" name="judul" class="form-control" id="judul" required>
                     </div>
                     <div class="mb-3">
-                        <label for="pesan" class="form-label">Pesan</label>
-                        <textarea class="form-control" id="pesan" name="pesan" rows="5" required></textarea>
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <textarea class="form-control" id="keterangan" name="keterangan" rows="5" required></textarea>
                     </div>
 
                     <button class="btn btn-primary">Kirim</button>

@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('kategori');
-            $table->string('prioritas');
+            $table->string('status');
+            $table->string('layanan');
+            $table->string('kategori'); 
             $table->string('judul');
-            $table->string('pesan');
+            $table->string('keterangan');
+            $table->string('file');
             $table->timestamp('ticket_verified_at')->nullable();
             $table->timestamps();
         });
