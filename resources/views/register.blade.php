@@ -65,7 +65,10 @@
                                     <input type="password" name="password" class="form-control" id="password" required>
                                 </div>
                                 <!--BUTTON REGISTRASI-->
-                                <button class="btn btn-primary">Registrasi</button>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="btn btn-primary">Register</button>
+                                    <a href="/login" class="btn btn-link ms-3">Login</a>
+                                </div>
                             </form>
                         </div>
                     </div>

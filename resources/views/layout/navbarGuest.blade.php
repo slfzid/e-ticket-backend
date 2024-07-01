@@ -152,18 +152,21 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href='tentangkami'>Tentang Kami</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href='informasi'>Informasi</a>
                         </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href='login'>login</a>
+                            <a class="nav-link active" aria-current="page" href='login'>Login</a>
                         </li>
                     </ul>
                 </div>
+            </div>
         </nav>
 </body>
 </html>
