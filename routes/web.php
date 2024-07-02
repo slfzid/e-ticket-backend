@@ -36,7 +36,10 @@ Route::group([], function () {
 
 //Group akses user
 Route::group(['middleware' => ['auth', 'cekLevel:user']], function () {
-    Route::post('createTicket', [ticketController::class, 'createTicketPost'])->name('createTicket');
+    Route::post('/storeTicket', [TicketController::class, 'store'])->name('storeTicket');
+
+// Rute untuk meng-handle pencarian tiket
+    Route::post('/findTicket', [TicketController::class, 'findTicket'])->name('findTicket');
 
     Route::get('/beranda', [PageController::class, 'beranda'])->name('beranda');
     Route::get('/informasi', [PageController::class, 'informasi'])->name('informasi');
@@ -49,6 +52,7 @@ Route::group(['middleware' => ['auth', 'cekLevel:user']], function () {
 Route::group(['middleware' => ['auth', 'cekLevel:admin']], function () {
     Route::get('/admindashboard', [PageController::class, 'admindashboard']);
     Route::get('/cekdatapengaduan', [PageController::class, 'cekdatapengaduan']);
+    Route::get('/getTickets', [TicketController::class, 'getTickets'])->name('getTickets');
     Route::get('/jawabpengaduan', [PageController::class, 'jawabpengaduan']);
 });
 

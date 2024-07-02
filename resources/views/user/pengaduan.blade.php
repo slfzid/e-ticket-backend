@@ -117,28 +117,28 @@
         <!--FORM PENGISIAN PENGADUAN-->
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('createTicket') }}" method="POST">
+                <!-- Form Pengaduan -->
+                <form action="{{ route('storeTicket') }}" method="POST">
                     @csrf
                     <h2>Kategori</h2>
                     <div class="mb-3">
                         <label for="kategori" class="form-label">Kategori</label>
                         <select class="form-select" id="kategori" name="kategori" required>
-                            <option value="Akun">Akun</option>
-                            <option value="Aplikasi">Aplikasi / Website</option>
-                            <option value="Aplikasi">Jaringan</option>
+                            <option value="1">Akun</option>
+                            <option value="2">Aplikasi / Website</option>
+                            <option value="3">Jaringan</option>
                         </select>
                     </div>
                     <h2>Isi Aduan</h2>
                     <div class="mb-3">
                         <label for="judul" class="form-label">Judul </label>
-                        <input type="judul" name="judul" class="form-control" id="judul" required>
+                        <input type="text" name="judul" class="form-control" id="judul" required>
                     </div>
                     <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan</label>
                         <textarea class="form-control" id="keterangan" name="keterangan" rows="5" required></textarea>
                     </div>
-
-                    <button class="btn btn-primary">Kirim</button>
+                    <button class="btn btn-primary" type="submit">Kirim</button>
                 </form>
             </div>
         </div>

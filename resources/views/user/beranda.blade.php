@@ -172,7 +172,7 @@
                         <img src="assets/informasi.png" class="card-img-top" alt="..." style="height:200px">
                         <div class="card-body">
                             <p class="card-text">Tata Cara</p>
-                            <a href='tatacara' class="btn btn-primary">Tata Cara</a>
+                            <a href='informasi' class="btn btn-primary">Tata Cara</a>
                         </div>
                     </div>
                 </div>

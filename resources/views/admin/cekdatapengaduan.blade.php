@@ -128,34 +128,44 @@
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Layanan Teknis</td>
-                            <td>Tidak Bisa Login</td>
-                            <td>Password salah meskipu benar</td>
-                            <td>open</td>
-                            <td>Medium</td>
-                            <td>
-                                <a href="/jawabadmin" class="btn btn-primary">Jawab Pengaduan</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Layanan Birokrasi</td>
-                            <td>Upload Dokumen</td>
-                            <td>Dokumen apa saja yang harus di upload untuk pendaftaran di kelurahan</td>
-                            <td>Pending</td>
-                            <td>Low</td>
-                            <td>
-                                <a href="/jawabadmin" class="btn btn-primary">Jawab Pengaduan</a>
-                            </td>
-                        </tr>
+                    <tbody id="ticketList">
+                        <!-- Tempat untuk menampilkan data tiket -->
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <!-- JavaScript untuk mengambil dan menampilkan data tiket -->
+    <script>
+        // Mengambil data dari endpoint dengan Fetch API
+        fetch('{{ route('getTickets') }}')
+            .then(response => response.json())
+            .then(data => {
+                // Memproses data tiket yang diterima
+                const tickets = data.tickets;
+
+                // Mendapatkan tabel untuk memasukkan data tiket
+                const ticketListTable = document.getElementById('ticketList');
+
+                // Memasukkan setiap data tiket ke dalam tabel
+                tickets.forEach(ticket => {
+                    let row = ticketListTable.insertRow();
+                    row.innerHTML = `
+                        <td>${ticket.id}</td>
+                        <td>${ticket.category_id}</td>
+                        <td>${ticket.subject}</td>
+                        <td>${ticket.description}</td>
+                        <td>${ticket.status}</td>
+                        <td>${ticket.priority}</td>
+                        <td>
+                            <a href="/jawabadmin" class="btn btn-primary">Jawab Pengaduan</a>
+                        </td>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
 
 </body>
 

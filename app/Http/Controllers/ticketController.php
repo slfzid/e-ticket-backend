@@ -1,68 +1,65 @@
-<?php
-// app/Http/Controllers/TicketController.php
+<?php 
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
-    public function index()
-    {
-        $tickets = Ticket::all();
-        return view('tickets.index', compact('tickets'));
-    }
-
     public function create()
     {
-        return view('tickets.create');
+        return view('create_ticket');
     }
 
     public function store(Request $request)
     {
+        // Validasi data input
         $request->validate([
-            'subject' => 'required',
-            'description' => 'required',
-            'priority' => 'required|in:low,medium,high',
+            'kategori' => 'required',
+            'judul' => 'required|string|max:255',
+            'keterangan' => 'required|string',
         ]);
 
-        Ticket::create([
-            'user_id' => auth()->id(),
-            'subject' => $request->subject,
-            'description' => $request->description,
-            'priority' => $request->priority,
-        ]);
+        // Buat objek Ticket baru
+        $ticket = new Ticket();
 
-        return redirect()->route('tickets.index')->with('success', 'Ticket created successfully.');
+        // Isi atribut-atribut ticket
+        $ticket->user_id = Auth::id(); // Mengambil ID pengguna yang sedang login
+        $ticket->category_id = $request->kategori;
+        $ticket->subject = $request->judul;
+        $ticket->description = $request->keterangan;
+        $ticket->status = 'open'; // Atur status secara default
+        $ticket->priority = 'medium'; // Atur prioritas secara default
+
+        // Simpan ticket ke dalam database
+        $ticket->save();
+
+        // Redirect ke halaman yang sesuai dengan peran pengguna
+        if (Auth::user()->level == 'user') {
+            return redirect('/pengaduan')->with('success', 'Pengaduan berhasil dibuat');
+        } elseif (Auth::user()->level == 'admin') {
+            return redirect('/admindashboard')->with('success', 'Pengaduan berhasil dibuat');
+        }
     }
 
-    public function show(Ticket $ticket)
-    {
-        return view('tickets.show', compact('ticket'));
+    public function findTicket(Request $request)
+{
+    $ticketId = $request->input('ticket_id');
+    $ticket = Ticket::find($ticketId);
+
+    if (!$ticket) {
+        return redirect()->back()->with('error', 'Tiket tidak ditemukan.');
     }
 
-    public function edit(Ticket $ticket)
+    return view('user.cekpengaduan', compact('ticket'));
+}
+
+
+    public function getTickets()
     {
-        return view('tickets.edit', compact('ticket'));
-    }
+        $tickets = Ticket::all();
 
-    public function update(Request $request, Ticket $ticket)
-    {
-        $request->validate([
-            'subject' => 'required',
-            'description' => 'required',
-            'status' => 'required|in:open,in_progress,closed',
-            'priority' => 'required|in:low,medium,high',
-        ]);
-
-        $ticket->update($request->all());
-
-        return redirect()->route('tickets.index')->with('success', 'Ticket updated successfully.');
-    }
-
-    public function destroy(Ticket $ticket)
-    {
-        $ticket->delete();
-        return redirect()->route('tickets.index')->with('success', 'Ticket deleted successfully.');
+        return response()->json(['tickets' => $tickets]);
     }
 }

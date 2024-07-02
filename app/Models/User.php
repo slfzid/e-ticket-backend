@@ -50,4 +50,14 @@ class User extends Authenticatable
             get: fn ($value) =>  ["user", "admin"][$value],
         );
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+    public function responses()
+    {
+        return $this->hasMany(Respon::class);
+    }
 }
