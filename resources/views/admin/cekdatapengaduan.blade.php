@@ -119,34 +119,34 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Ticket ID</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Id</th>
                             <th scope="col">Kategori</th>
-                            <th scope="col">Layanan</th>
                             <th scope="col">Judul</th>
                             <th scope="col">Keterangan</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Prioritas</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td>Issued</td>
-                            <td>Aplikasi</td>
-                            <td>E-Budgeting</td>
-                            <td>Judul</td>
-                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</td>
+                            <td>Layanan Teknis</td>
+                            <td>Tidak Bisa Login</td>
+                            <td>Password salah meskipu benar</td>
+                            <td>open</td>
+                            <td>Medium</td>
                             <td>
                                 <a href="/jawabadmin" class="btn btn-primary">Jawab Pengaduan</a>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td>On Progress</td>
-                            <td>Aplikasi</td>
-                            <td>SABK</td>
-                            <td>Judul</td>
-                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</td>
+                            <td>Layanan Birokrasi</td>
+                            <td>Upload Dokumen</td>
+                            <td>Dokumen apa saja yang harus di upload untuk pendaftaran di kelurahan</td>
+                            <td>Pending</td>
+                            <td>Low</td>
                             <td>
                                 <a href="/jawabadmin" class="btn btn-primary">Jawab Pengaduan</a>
                             </td>

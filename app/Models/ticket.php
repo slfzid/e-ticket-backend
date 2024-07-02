@@ -1,5 +1,5 @@
 <?php
-
+// app/Models/Ticket.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,12 +10,25 @@ class Ticket extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
+        'subject',
+        'description',
         'status',
-        'layanan',
-        'kategori',
-        'judul',
-        'keterangan',
-        'file',
-        'tgl permohonan',
+        'priority',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function attachments()
+    {
+        return $this->hasMany(Attachment::class);
+    }
 }

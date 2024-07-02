@@ -123,13 +123,18 @@
                         <h2>Form Jawab Pengaduan</h2>
                         <form>
                             <div class="mb-3">
+                                <label for="pengaduanTitle" class="form-label">Ticket Id</label>
+                                <input type="text" class="form-control" id="pengaduanTitle" name="pengaduanTitle" readonly value="1">
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="pengaduanTitle" class="form-label">Judul Pengaduan</label>
-                                <input type="text" class="form-control" id="pengaduanTitle" name="pengaduanTitle" readonly value="Pengaduan 1">
+                                <input type="text" class="form-control" id="pengaduanTitle" name="pengaduanTitle" readonly value="Tidak Bisa Logi">
                             </div>
 
                             <div class="mb-3">
                                 <label for="pengaduanContent" class="form-label">Isi Pengaduan</label>
-                                <textarea class="form-control" id="pengaduanContent" name="pengaduanContent" rows="5" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et eleifend ligula, vel tristique lacus. Proin in consectetur augue. Nullam id vulputate libero. Integer id quam a ligula porttitor ultrices nec at velit.</textarea>
+                                <textarea class="form-control" id="pengaduanContent" name="pengaduanContent" rows="5" readonly>Password saya salah padahal benar</textarea>
                             </div>
 
                             <div class="mb-3">

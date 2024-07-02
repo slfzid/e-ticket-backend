@@ -128,14 +128,6 @@
                             <option value="Aplikasi">Jaringan</option>
                         </select>
                     </div>
-                    <h2>Layanan</h2>
-                    <div class="mb-3">
-                        <label for="layanan" class="form-label">Layanan</label>
-                        <select class="form-select" id="layanan" name="layanan" required>
-                            <option value="e-budgeting">E-Budgeting</option>
-                            <option value="sabk">SABK</option>
-                        </select>
-                    </div>  
                     <h2>Isi Aduan</h2>
                     <div class="mb-3">
                         <label for="judul" class="form-label">Judul </label>

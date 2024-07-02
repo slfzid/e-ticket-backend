@@ -1,26 +1,68 @@
 <?php
-
+// app/Http/Controllers/TicketController.php
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Hash;
 
-class ticketController extends Controller
+class TicketController extends Controller
 {
-    public function createTicketPost(Request $request)
+    public function index()
     {
-        $ticket = new ticket();
+        $tickets = Ticket::all();
+        return view('tickets.index', compact('tickets'));
+    }
 
-        $ticket->status = "Issued";
-        $ticket->layanan = $request->layanan;
-        $ticket->kategori = $request->kategori;
-        $ticket->judul = $request->judul;
-        $ticket->keterangan = Hash::make($request->keterangan);
-        $ticket->file = "-";
-        $ticket->save();
+    public function create()
+    {
+        return view('tickets.create');
+    }
 
-        return redirect('pengaduan')->with('success', 'Ticket successfully sent');
+    public function store(Request $request)
+    {
+        $request->validate([
+            'subject' => 'required',
+            'description' => 'required',
+            'priority' => 'required|in:low,medium,high',
+        ]);
+
+        Ticket::create([
+            'user_id' => auth()->id(),
+            'subject' => $request->subject,
+            'description' => $request->description,
+            'priority' => $request->priority,
+        ]);
+
+        return redirect()->route('tickets.index')->with('success', 'Ticket created successfully.');
+    }
+
+    public function show(Ticket $ticket)
+    {
+        return view('tickets.show', compact('ticket'));
+    }
+
+    public function edit(Ticket $ticket)
+    {
+        return view('tickets.edit', compact('ticket'));
+    }
+
+    public function update(Request $request, Ticket $ticket)
+    {
+        $request->validate([
+            'subject' => 'required',
+            'description' => 'required',
+            'status' => 'required|in:open,in_progress,closed',
+            'priority' => 'required|in:low,medium,high',
+        ]);
+
+        $ticket->update($request->all());
+
+        return redirect()->route('tickets.index')->with('success', 'Ticket updated successfully.');
+    }
+
+    public function destroy(Ticket $ticket)
+    {
+        $ticket->delete();
+        return redirect()->route('tickets.index')->with('success', 'Ticket deleted successfully.');
     }
 }
