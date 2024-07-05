@@ -54,5 +54,9 @@ Route::group(['middleware' => ['auth', 'cekLevel:admin']], function () {
     Route::get('/cekdatapengaduan', [PageController::class, 'cekdatapengaduan']);
     Route::get('/getTickets', [TicketController::class, 'getTickets'])->name('getTickets');
     Route::get('/jawabpengaduan', [PageController::class, 'jawabpengaduan']);
+    Route::get('/jawabpengaduan/{ticketId}', [TicketController::class, 'jawabPengaduan'])->name('jawabPengaduan');
+    Route::get('/getTicketDetails/{ticketId}', [TicketController::class, 'getTicketDetails'])->name('getTicketDetails');
+    Route::get('/getTickets', [TicketController::class, 'getTickets'])->name('getTickets');
+
 });
 

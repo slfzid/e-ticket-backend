@@ -3,15 +3,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use App\Models\Respon;
 use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
-    public function create()
-    {
-        return view('create_ticket');
-    }
-
     public function store(Request $request)
     {
         // Validasi data input
@@ -56,10 +52,27 @@ class TicketController extends Controller
 }
 
 
-    public function getTickets()
-    {
-        $tickets = Ticket::all();
+public function getTickets(Request $request)
+{
+    $query = Ticket::query();
 
-        return response()->json(['tickets' => $tickets]);
+    if ($request->has('start_date') && $request->has('end_date')) {
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+        $query->whereBetween('created_at', [$startDate, $endDate]);
+    }
+
+    $tickets = $query->get();
+
+    return response()->json(['tickets' => $tickets]);
+}
+
+    public function jawabPengaduan($ticketId)
+    {
+        // Ambil detail tiket berdasarkan ID
+        $ticket = Ticket::findOrFail($ticketId);
+
+        // Tampilkan halaman jawab pengaduan dengan data tiket
+        return view('jawabpengaduan', compact('ticket'));
     }
 }
